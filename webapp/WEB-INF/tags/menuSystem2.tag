@@ -8,6 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
+  jspContext.setAttribute("tenantPrefix", request.getContextPath());
   ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(application);
   MenuConnector menuConnector = ctx.getBean(MenuConnector.class);
   CurrentUserHolder currentUserHolder = ctx.getBean(CurrentUserHolder.class);
