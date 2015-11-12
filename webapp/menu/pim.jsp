@@ -1,4 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%
+  jspContext.setAttribute("tenantPrefix", request.getContextPath());
+%>
       <!-- start of sidebar -->
       <aside id="m-sidebar" class="accordion span2" data-spy="affix" data-offset-top="100">
 

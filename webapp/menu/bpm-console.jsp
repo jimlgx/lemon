@@ -1,4 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  pageContext.setAttribute("tenantPrefix", request.getContextPath());
+%>
       <!-- start of sidebar -->
       <aside id="m-sidebar" class="accordion span2" data-spy="affix" data-offset-top="100">
 

@@ -8,6 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="systemCode" type="java.lang.Object" required="true"%>
 <%
+  //jspContext.setAttribute("tenantPrefix", request.getContextPath());
   String systemCode = (String) jspContext.getAttribute("systemCode");
   // System.out.println("systemCode : " + systemCode);
 
