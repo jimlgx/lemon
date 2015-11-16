@@ -40,7 +40,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 /**
  * modeler.
@@ -180,17 +183,31 @@ public class ModelerController {
     }
 
     @RequestMapping("editor/stencilset")
-    @ResponseBody
-    public String stencilset() throws Exception {
+    public ModelAndView stencilset() throws Exception {
         InputStream stencilsetStream = this.getClass().getClassLoader()
                 .getResourceAsStream("stencilset.json");
 
         try {
-            return IOUtils.toString(stencilsetStream, "utf-8");
+            ModelAndView mv = new ModelAndView();
+            View view = new InternalResourceView("/content/editor/stencilset.json");
+            mv.setView(view);
+            return mv;
         } catch (Exception e) {
             throw new RuntimeException("Error while loading stencil set", e);
         }
     }
+//    @RequestMapping("editor/stencilset")
+//    @ResponseBody
+//    public String stencilset() throws Exception {
+//        InputStream stencilsetStream = this.getClass().getClassLoader()
+//                .getResourceAsStream("stencilset.json");
+//
+//        try {
+//            return IOUtils.toString(stencilsetStream, "utf-8");
+//        } catch (Exception e) {
+//            throw new RuntimeException("Error while loading stencil set", e);
+//        }
+//    }
 
     @RequestMapping("model/{modelId}/save")
     @ResponseBody
